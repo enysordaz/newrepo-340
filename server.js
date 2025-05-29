@@ -11,6 +11,7 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
+const utilities = require('./utilities'); // or './utilities/index' if it's in a folder -- fixed bug
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -28,8 +29,9 @@ app.get("/", baseController.buildHome)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({status: 404, message: 'Oops! It broke... Sorry, we appear to have lost that page.'})
 })
+
 
 /* ***********************
 * Express Error Handler

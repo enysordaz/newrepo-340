@@ -102,7 +102,6 @@ nav> ul > li {
 }
 
 /*-------------- Hero Content ----------------------*/
-
 .hero-container {
   position: relative;
   width: 100%;
@@ -137,14 +136,22 @@ main .hero-container .hero-text{
   list-style-type: none;
   text-align: left;
 }
+/* --------------- Error page -------------------------*/
+.broken-code img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  padding-top: 5px;
+  margin-top: 25px;
+}
 
+/* ------------- Grid / Main info  ------------------- */
 .delorean-grid {
   display: flex;
   flex-direction: column;
   padding-top: 30px;
 }
 
-/* ------------- Grid / Main info  ------------------- */
 .delorean-grid h3{
   font-size: 25px;
 }
@@ -260,6 +267,7 @@ footer > p {
     background-size: 500px;
     transform: translate(-50%, -50%);
   }
+
   /* ------------- Grid / Main layout  ------------------- */
   main .delorean-grid {
     display: grid;
