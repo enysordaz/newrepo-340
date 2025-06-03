@@ -31,16 +31,6 @@ body {
   background-color: var(--nav-link-color);
 }
 
-a {
-  text-decoration: none;
-  color: var(--text-color-light);
-}
-
-a:hover {
-  text-decoration: overline solid 3px;
-  text-decoration-color: var(--primary-color);
-}
-
 p {
   font-size: 18px;
   padding: 0px;
@@ -105,6 +95,16 @@ nav> ul > li {
   padding: 1rem;
   justify-content: space-between;
   cursor: pointer;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color-light);
+}
+
+nav a:hover {
+  text-decoration: overline solid 3px;
+  text-decoration-color: var(--primary-color);
 }
 
 /*-------------- Hero Content ----------------------*/
@@ -229,6 +229,9 @@ main .hero-container .hero-text{
   grid-column: 2/3;
   grid-row: 3/4;
 }
+
+/* ------------- Classification  ------------------- */
+
 
 /* ------------- Footer  ------------------- */
 footer > p {
