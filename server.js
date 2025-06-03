@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const utilities = require('./utilities'); // or './utilities/index' if it's in a folder -- fixed bug
+const inventoryRoute = require('./routes/inventoryRoute')
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -26,6 +27,9 @@ app.use(static)
 
 // Index route
 app.get("/", baseController.buildHome)
+
+// Inventory routes
+app.use("/inv", inventoryRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

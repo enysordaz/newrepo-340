@@ -33,6 +33,12 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--text-color-light);
+}
+
+a:hover {
+  text-decoration: overline solid 3px;
+  text-decoration-color: var(--primary-color);
 }
 
 p {
