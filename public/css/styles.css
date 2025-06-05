@@ -13,13 +13,14 @@
   --secondary-color: #4C4C4C;
   --accent1-color: #C2C2C2;
   --required-color: #a70000;
-  --heading-elegant-font: ui-serif;
-  --heading-font: system-ui;
+  --heading-elegant-font: "Merriweather", serif;
+  --heading-font: "Roboto", sans-serif;
   --paragraph-font: system-ui; 
   --nav-link-color: #fff;
   --nav-background-color: #242332;
   --nav-hover-link-color: #01B0D3;
   --nav-hover-background-color: #83e7fb;
+  --p-highlight-bg: #f0eaf1ce;
 }
 
 body {
@@ -296,14 +297,44 @@ main .hero-container .hero-text{
   cursor: pointer;
 }
 
+/* -------------  Details view  ------------------- */
+.detail {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+.detail img {
+  padding: 10px;
+}
+
+.detail-info {
+  font-family: var(--paragraph-font);
+  text-align: left;
+  padding: 15px;
+  margin: 8px;
+}
+
+.detail-info h2{
+  font-family: var(--heading-font);
+}
+
+.detail-highlight {
+  background-color: var(--p-highlight-bg);
+  padding: 5px;
+  border-radius: 2px;
+}
+
 /* ------------- Footer  ------------------- */
-footer > p {
+footer {
   font-family: var(--paragraph-font);
   text-align: left;
   padding-left: 25px;
   color: var(--secondary-color);
   margin-top: 20px;
 }
+
 
 /*-------------- LARGER VIEWS ----------------------*/
 @media only screen and (min-width: 38rem) {
@@ -361,7 +392,7 @@ footer > p {
     justify-items: center;
   }
 
-  .details-page {
+  .detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;

@@ -14,6 +14,9 @@ const baseController = require("./controllers/baseController")
 const utilities = require('./utilities/'); // or './utilities/index' if it's in a folder -- fixed bug
 const inventoryRoute = require('./routes/inventoryRoute')
 
+const errorRoutes = require('./routes/inventoryRoute');
+app.use('/', errorRoutes); // or '/inventory' if scoped
+
 /* ***********************
  * View Engine and Templates
  *************************/
