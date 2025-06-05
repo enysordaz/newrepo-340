@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const utilities = require('./utilities/'); // or './utilities/index' if it's in a folder -- fixed bug
 const inventoryRoute = require('./routes/inventoryRoute')
+
 /* ***********************
  * View Engine and Templates
  *************************/
