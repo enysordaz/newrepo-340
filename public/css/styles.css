@@ -336,7 +336,8 @@ main .hero-container .hero-text{
 }
 
 /* ------------- Form  ------------------- */
-#myAccount {
+#myAccount, 
+#register {
   display: flex;
   flex-direction: column;
   padding: .5rem;
@@ -361,7 +362,8 @@ fieldset {
   width: 100%;
 }
 
-#myAccount label {
+#myAccount label,
+#register label {
   color: var(--text-color-light);
   font-family: var(--heading-font);
   text-align: left;
@@ -369,7 +371,9 @@ fieldset {
 }
 
 #myAccount input[type=email],
-input[type=text] {
+#myAccount input[type=text],
+#register input[type=text],
+#register input[type=email] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

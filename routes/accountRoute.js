@@ -8,12 +8,11 @@ const accountController = require("../controllers/accountController");
 //Error route
 const errorController = require('../controllers/errorController');
 
-// Route to build inventory by classification view
-//router.get("/detail/:id", accountController.getMyAccount );
-
 // Route to build login view
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 
+// Route to build registration view
+router.get("/registration", utilities.handleErrors(accountController.buildRegistration))
 
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError);

@@ -1,0 +1,23 @@
+<h1><%= title %></h1>
+<%- messages() %>
+<form action="/account/register" method="post">
+    <fieldset>
+        <label for="fname">First name: </label>
+        <input type="text" value="fname" name="fname">
+    </fieldset>
+    <fieldset>
+        <label for="lname">Last name:</label>
+        <input type="text" value="lname" name="lname">
+    </fieldset>
+    <fieldset>
+        <label for="email">Email: </label>
+        <input type="email" value="email" name="email" id="email">
+    </fieldset>
+    <fieldset>
+        <label for="password">Password: </label>
+        <input type="text" value="password" name="password" id="password">
+    </fieldset>
+
+    <input type="submit" value="LOGIN" name="login"> 
+
+</form>
