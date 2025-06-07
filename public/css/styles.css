@@ -21,6 +21,7 @@
   --nav-hover-link-color: #01B0D3;
   --nav-hover-background-color: #83e7fb;
   --p-highlight-bg: #f0eaf1ce;
+  --form-bg-color: #003a60;
 }
 
 body {
@@ -332,6 +333,28 @@ main .hero-container .hero-text{
   background-color: var(--p-highlight-bg);
   padding: 5px;
   border-radius: 2px;
+}
+
+/* ------------- Form  ------------------- */
+#myAccount {
+  border-radius: 2px;
+  border: 2px solid var(--accent1-color);
+  background-color: var(--form-bg-color);
+  
+}
+
+#myAccount label {
+  color: var(--text-color-light);
+  font-family: var(--heading-font);
+}
+
+.sign-up {
+  color: var(--text-color-light);
+  font-family: var(--paragraph-font);
+}
+
+.sign-up a {
+  text-decoration: underline;
 }
 
 /* ------------- Footer  ------------------- */
