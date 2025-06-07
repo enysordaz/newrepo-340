@@ -109,6 +109,13 @@ nav a:hover {
 }
 
 /*-------------- Hero Content ----------------------*/
+.notice {
+  text-align: left;
+  font-family: var(--paragraph-font);
+  font-style: italic;
+  color: orangered;
+}
+
 .hero-container {
   position: relative;
   width: 100%;
@@ -143,6 +150,7 @@ main .hero-container .hero-text{
   list-style-type: none;
   text-align: left;
 }
+
 /* --------------- Error page -------------------------*/
 .broken-code img {
   width: 100%;
