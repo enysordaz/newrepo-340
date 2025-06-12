@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
 <%- messages() %>
-<form action="/account/registration" method="post">
+<form action="account/register" method="post" id="register">
     <fieldset>
         <label for="fname">First name: </label>
         <input type="text" value="fname" name="fname">
@@ -16,6 +16,7 @@
     <fieldset>
         <label for="password">Password: </label>
         <input type="text" value="password" name="password">
+        <span id="pswdBtn">Show Password</span>
     </fieldset>
 
     <input type="submit" value="Register" name="Register"> 

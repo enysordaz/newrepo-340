@@ -74,6 +74,11 @@ h1, h2, h3 {
   font-family: var(--heading-font);
 }
 
+#tools:hover {
+  text-decoration: overline;
+  text-decoration-color: var(--primary-color);
+}
+
 /* ------------- Navigation ------------------- */
 nav {
   display: grid;
@@ -384,15 +389,20 @@ fieldset {
   box-sizing: border-box;
 }
 
-#myAccount input[type=submit] {
+#myAccount input[type=submit],
+#register input[type=submit] {
   border-radius: 20px;
   padding: .75rem 2rem;
+  font-size: 1rem;
   background-color: var(--nav-link-color);
   color: var(--form-bg-color);
 }
 
-#myAccount input[type=submit]:hover{
+#myAccount input[type=submit]:hover,
+#register input[type=submit]:hover {
   background-color: var(--primary-color);
+  font-weight: 700;
+  color: var(--text-color-light);
 }
 
 
@@ -406,6 +416,11 @@ fieldset {
 .sign-up a {
   text-decoration: underline;
 }
+
+.sign-up a:hover{
+  color: var(--primary-color);
+}
+
 
 /* ------------- Footer  ------------------- */
 footer {

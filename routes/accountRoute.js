@@ -11,8 +11,8 @@ const errorController = require('../controllers/errorController');
 // Route to build login view
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 
-// Route to build registration view
-router.get("/registration", utilities.handleErrors(accountController.buildRegistration))
+// Route to build register view
+router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError);
