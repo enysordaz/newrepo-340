@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
 <%- messages() %>
-<form action="account/register" method="post" id="register">
+<form action="account/register" method="post" id="registerForm">
     <fieldset>
         <label for="fname">First name: </label>
         <input type="text" value="fname" name="fname">
@@ -16,7 +16,7 @@
     <fieldset>
         <label for="password">Password: </label>
         <input type="text" value="password" name="password">
-        <span id="pswdBtn">Show Password</span>
+        <span>The password must be minimum 12 characters in length, contain at least 1 capital letter, contain at least 1 number, contain at least 1 special character</span>
     </fieldset>
 
     <input type="submit" value="Register" name="Register"> 
