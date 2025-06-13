@@ -377,8 +377,10 @@ fieldset {
 
 #myAccount input[type=email],
 #myAccount input[type=text],
+#myAccount input[type=password],
 #registerForm input[type=text],
-#registerForm input[type=email] {
+#registerForm input[type=email],
+#registerForm input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -419,6 +421,16 @@ fieldset {
   color: var(--primary-color);
 }
 
+.password {
+  display: flex;
+  flex-direction: column;
+}
+
+.password span {
+  font-size: 12px;
+  color: var(--text-color-light);
+  font-family: var(--paragraph-font);
+}
 
 /* ------------- Footer  ------------------- */
 footer {

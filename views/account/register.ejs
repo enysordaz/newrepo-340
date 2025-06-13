@@ -1,22 +1,32 @@
 <h1><%= title %></h1>
 <%- messages() %>
-<form action="account/register" method="post" id="registerForm">
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<form action="/account/register" method="post" id="registerForm">
     <fieldset>
-        <label for="fname">First name: </label>
-        <input type="text" value="fname" name="account_firstname">
+        <label for="accountFirstname">First name: </label>
+        <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
     </fieldset>
     <fieldset>
-        <label for="lname">Last name:</label>
-        <input type="text" value="lname" name="account_lastname">
+        <label for="accountLastname">Last name:</label>
+        <input type="text" name="account_lastname" required value="<%= locals.account_lastname %>">
     </fieldset>
     <fieldset>
-        <label for="email">Email: </label>
-        <input type="email" value="email" name="account_email">
+        <label for="accountEmail">Email: </label>
+        <input type="email" name="account_email" required value="<%= locals.account_email %>">
     </fieldset>
     <fieldset>
-        <label for="password">Password: </label>
-        <input type="text" value="password" name="account_password">
-        <span>The password must be minimum 12 characters in length, contain at least 1 capital letter, contain at least 1 number, contain at least 1 special character</span>
+        <div class="password">
+            <label for="accountPassword">Password: </label>
+            <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
+            <input type="password" name="account_password" id="accountPassword" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+        </div>
     </fieldset>
 
     <input type="submit" value="Register" name="Register"> 
