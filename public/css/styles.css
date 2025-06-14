@@ -342,7 +342,9 @@ main .hero-container .hero-text{
 
 /* ------------- Form  ------------------- */
 #myAccount, 
-#registerForm {
+#registerForm,
+#addClassificationForm,
+#addInventoryForm {
   display: flex;
   flex-direction: column;
   padding: .5rem;
@@ -367,8 +369,11 @@ fieldset {
   width: 100%;
 }
 
+
 #myAccount label,
-#registerForm label {
+#registerForm label,
+#addClassificationForm label,
+#addInventoryForm label {
   color: var(--text-color-light);
   font-family: var(--heading-font);
   text-align: left;
@@ -380,7 +385,9 @@ fieldset {
 #myAccount input[type=password],
 #registerForm input[type=text],
 #registerForm input[type=email],
-#registerForm input[type=password] {
+#registerForm input[type=password],
+#addClassificationForm input[type=text],
+#addInventoryForm input[type=text] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -392,7 +399,9 @@ fieldset {
 }
 
 #myAccount input[type=submit],
-#registerForm input[type=submit] {
+#registerForm input[type=submit],
+#addClassificationForm input[type=submit],
+#addInventoryForm input[type=submit] {
   border-radius: 20px;
   padding: .75rem 2rem;
   font-size: 1rem;
@@ -421,12 +430,14 @@ fieldset {
   color: var(--primary-color);
 }
 
-.password {
+.password,
+.instructions {
   display: flex;
   flex-direction: column;
 }
 
-.password span {
+.password span,
+.instructions span {
   font-size: 12px;
   color: var(--text-color-light);
   font-family: var(--paragraph-font);
@@ -510,8 +521,4 @@ footer {
     padding: 2rem 1rem;
   }
 
-  /*Log In form
-  #myAccount{
-    
-  }*/
 }

@@ -36,6 +36,4 @@ router.post(
 router.get('/trigger-error', errorController.throwServerError);
 
 
-
-
 module.exports = router;
