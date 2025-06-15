@@ -9,6 +9,28 @@ const invValidate = require("../utilities/inv-validation")
 //Error route
 const errorController = require('../controllers/errorController')
 
+/*
+const managementView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    errors: null
+  })
+}
+
+router.get("/", async (req, res) => {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    errors: null
+  })
+})
+*/
+
+
+
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId)
 
@@ -26,15 +48,14 @@ router.post(
     .notEmpty().withMessage("Classification name is required")
     .matches(/^[A-Za-z0-9]+$/).withMessage("No spaces or special characters allowed"),
   invController.addClassification
-  
-  //regValidate.classificationRules(),
-  //regValidate.checkRegData,
-  //utilities.handleErrors(invController.addClassification)
 )
 
 // Route to build Inventory Details view
 router.get("/add-inventory", invController.buildAddInventory)
 router.post("/add-inventory", invValidate.inventoryValidationRules(), invController.addInventory)
+
+//Route for /inv
+router.get('/', invController.managementView)
 
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError)

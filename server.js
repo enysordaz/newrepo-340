@@ -20,12 +20,12 @@ const bodyParser = require("body-parser")
 
 //error Route
 const errorRoutes = require('./routes/inventoryRoute');
-app.use('/', errorRoutes); // or '/inventory' if scoped
+app.use('/error', errorRoutes); // or '/inventory' if scoped
 
 /* ***********************
  * Middleware
  * ************************/
- app.use(session({
+app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
     pool,

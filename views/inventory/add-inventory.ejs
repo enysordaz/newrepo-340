@@ -1,49 +1,57 @@
 <h1><%= title %></h1>
 <%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <%  }) %>
+ </ul>
+<% } %>
 
 <form action="/inv/add-inventory" method="post" id="addInventoryForm">
     <fieldset>
-        <label for="classification_id">Select the Classification: </label>
-        <select name="classification_id" id="classificationID" title="Classification" required>
-            <option value="">-- Select a Classification --</option>
-            <% classificationList.forEach(item => { %>
-                <option value="<%= item.classification_id %>" <%= inventory?.classification_id == item.classification_id ? "selected" : "" %>>
-                    <%= item.classification_name %>
-                </option>
-            <% }) %>
-        </select>
+        <div class="instructions">
+            <label for="classification_id">Select the Classification: </label>
+            <%- classificationList %>
+        </div>
     </fieldset>
     <fieldset>
-        <label for="inv_make"></label>
-        <input type="text" name="inv_make" id="invMake" title="Make" required value="<%= locals.inv_make %>">
+        <label for="inv_make">Make: </label>
+        <input type="text" name="inv_make" id="invMake" title="Make" required value="<%= inventory.inv_make %>">
     </fieldset>
     <fieldset>
-        <label for="inv_model"></label>
-        <input type="text" name="inv_model" title="Car Model" id="invModel" required value="<%= locals.inv_model %>">
+        <label for="inv_model">Model: </label>
+        <input type="text" name="inv_model" title="Car Model" id="invModel" required value="<%= inventory.inv_model %>">
     </fieldset>
     <fieldset>
-        <label for="inv_year"></label>
-        <input type="text" name="inv_year" title="Car Year" id="invYear" required value="<%= locals.inv_year %>">
+        <label for="inv_year">Year: </label>
+        <input type="text" name="inv_year" title="Car Year" id="invYear" required value="<%= inventory.inv_year %>">
     </fieldset>
     <fieldset>
-        <label for="inv_description"></label>
-        <textarea name="inv_description" title="Car Description" id="invDescription" required value="<%= locals.inv_description %>"></textarea>
+        <div class="instructions">
+            <label for="inv_description">Description: </label>
+            <textarea name="inv_description" title="Car Description" id="invDescription" required value="<%= inventory.inv_description %>"></textarea>
+        </div>
     </fieldset>
     <fieldset>
-        <label for="inv_image"></label>
-        <input type="text" name="inv_image" title="Car Image Path" id="invImage" required value="<%= locals.inv_image %>">
+        <label for="inv_image">Image Path:</label>
+        <input type="text" name="inv_image" title="Car Image Path" id="invImage" required value="<%= inventory.inv_image %>">
     </fieldset>
     <fieldset>
-        <label for="inv_price"></label>
-        <input type="text" name="inv_price" title="Car Price" id="invPrice" required value="<%= locals.inv_price %>">
+        <label for="inv_thumbnail">Image Thumbnail Path:</label>
+        <input type="text" name="inv_thumbnail" title="Car Image Thumbnail Path" id="invThumbnail" required value="<%= inventory.inv_image %>">
     </fieldset>
     <fieldset>
-        <label for="inv_miles"></label>
-        <input type="text" name="inv_miles" title="Car Milage" id="invMiles" required value="<%= locals.inv_miles %>">
+        <label for="inv_price">Price: </label>
+        <input type="text" name="inv_price" title="Car Price" id="invPrice" required value="<%= inventory.inv_price %>">
     </fieldset>
     <fieldset>
-        <label for="inv_color"></label>
-        <input type="text" name="inv_color" title="Car Color" id="invColor" required value="<%= locals.inv_color %>">
+        <label for="inv_miles">Miles: </label>
+        <input type="text" name="inv_miles" title="Car Miles" id="invMiles" required value="<%= inventory.inv_miles %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_color">Color: </label>
+        <input type="text" name="inv_color" title="Car Color" id="invColor" required value="<%= inventory.inv_color %>">
     </fieldset>
 
     <input type="submit" value="Add Vehicle" name="Add Vehicle">

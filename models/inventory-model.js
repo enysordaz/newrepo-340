@@ -52,8 +52,8 @@ async function addClassification(classification_name){
       VALUES ($1)
       RETURNING *;
     `
-    const result = await pool.query(sql, [classification_name])
-    return result.rows[0]
+    const result = await pool.query(sql, [classification_name], true, true)
+    return result//.rows[0]
   } catch (error) {
     console.error("addClassification error:", error)
     return null
@@ -85,7 +85,7 @@ async function addInventory(data) {
       data.inv_color,
     ];
     const result = await pool.query(sql, values);
-    return result.rows[0];
+    return result//.rows[0];
   } catch (error) {
     console.error("addInventory error:", error);
     return null;

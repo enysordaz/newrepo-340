@@ -1,6 +1,5 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-//const { validateResult } = require("express-validator")
 const pool = require('../database')
 const { validationResult } = require("express-validator")
 
@@ -100,7 +99,7 @@ invCont.addClassification = async function (req, res, next) {
 invCont.buildAddInventory = async function (req, res, next) {
   try{
     const nav = await utilities.getNav()
-    const classifications = await invModel.getClassifications()
+    const classifications = await utilities.buildClassificationList()
 
     res.render("inventory/add-inventory", {
       title: "Add New Vehicle",
@@ -121,20 +120,20 @@ invCont.buildAddInventory = async function (req, res, next) {
 invCont.addInventory = async function (req, res, next) {
   try {
     const nav = await utilities.getNav()
-    const classifications = await invModel.getClassifications()
+    const classifications = await utilities.buildClassificationList(req.body.classification_id)
     const errors = validationResult(req)
 
     const inventory = {
       classification_id: req.body.classification_id,
-      inv_make: req.body.make,
-      inv_model: req.body.model,
-      inv_description: req.body.description,
+      inv_make: req.body.inv_make,
+      inv_model: req.body.inv_model,
+      inv_description: req.body.inv_description,
       inv_image: req.body.inv_image,
       inv_thumbnail: req.body.inv_thumbnail,
-      inv_price: req.body.price,
-      inv_year: req.body.year,
-      inv_miles: req.body.miles,
-      inv_color: req.body.color,
+      inv_price: req.body.inv_price,
+      inv_year: req.body.inv_year,
+      inv_miles: req.body.inv_miles,
+      inv_color: req.body.inv_color,
     }
 
     if (!errors.isEmpty()) {
@@ -168,20 +167,15 @@ invCont.addInventory = async function (req, res, next) {
   }
 }
 
-/*
-async function buildAddInventory(req, res, next) {
-  try {
-    const classificationList = await invModel.getClassifications(); // récupère les classifications
-    res.render("inv/add-inventory", {
-      title: "Add New Vehicle",
-      classificationList, 
-      inventory: null,
-      errors: null,
-      message: null 
-    });
-  } catch (error) {
-    next(error);
-  }
-}*/
+
+invCont.managementView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    errors: null
+  })
+}
+
 
 module.exports = invCont

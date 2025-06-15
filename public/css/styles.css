@@ -251,6 +251,7 @@ main .hero-container .hero-text{
   align-items: center;
   list-style: none;
   width: 250px;
+  
   border-radius: 10px;
 }
 
@@ -277,6 +278,7 @@ main .hero-container .hero-text{
 
 #inv-display img {
   width: 100%;
+  max-height: 165px;
   height: auto;
   border-radius: 5px;
 }
@@ -303,7 +305,7 @@ main .hero-container .hero-text{
 }
 
 .namePrice span {
-  padding: 0 0.5rem;
+  padding: 0 0.25rem;
   color: var(--text-color-dark);
 }
 
@@ -321,6 +323,7 @@ main .hero-container .hero-text{
 
 .detail img {
   padding: 10px;
+  max-width: 500px;
 }
 
 .detail-info {
@@ -344,7 +347,8 @@ main .hero-container .hero-text{
 #myAccount, 
 #registerForm,
 #addClassificationForm,
-#addInventoryForm {
+#addInventoryForm,
+.management {
   display: flex;
   flex-direction: column;
   padding: .5rem;
@@ -369,7 +373,6 @@ fieldset {
   width: 100%;
 }
 
-
 #myAccount label,
 #registerForm label,
 #addClassificationForm label,
@@ -387,14 +390,16 @@ fieldset {
 #registerForm input[type=email],
 #registerForm input[type=password],
 #addClassificationForm input[type=text],
-#addInventoryForm input[type=text] {
+#addInventoryForm input[type=text],
+#addInventoryForm select,
+#addInventoryForm textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 5px;
   border: none;
-  color: var(--secondary-color);
+  color: var(--text-color-dark);
   box-sizing: border-box;
 }
 
@@ -410,23 +415,44 @@ fieldset {
 }
 
 #myAccount input[type=submit]:hover,
-#registerForm input[type=submit]:hover {
+#registerForm input[type=submit]:hover,
+#addClassificationForm input[type=submit]:hover,
+#addInventoryForm input[type=submit]:hover {
   background-color: var(--primary-color);
   font-weight: 700;
   color: var(--text-color-light);
 }
 
-.sign-up {
+input:required:valid {
+  border-color: green;
+}
+input:invalid {
+  border-color: red;
+}
+input:required:focus:valid {
+  background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg") no-repeat 95% 50% lightgreen;
+  background-size: 25px;
+}
+input:focus:invalid {
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% lightsalmon;
+  background-size: 25px;
+}
+
+.sign-up,
+.management li,
+.management a {
   color: var(--text-color-light);
   font-family: var(--paragraph-font);
   margin: 15px;
 }
 
-.sign-up a {
+.sign-up a,
+.management a {
   text-decoration: underline;
 }
 
-.sign-up a:hover{
+.sign-up a:hover,
+.management a:hover{
   color: var(--primary-color);
 }
 
@@ -442,6 +468,7 @@ fieldset {
   color: var(--text-color-light);
   font-family: var(--paragraph-font);
 }
+
 
 /* ------------- Footer  ------------------- */
 footer {

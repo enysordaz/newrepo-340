@@ -1,5 +1,5 @@
 const utilities = require(".")
-const { body, validateResult } = require("express-validator")
+const { body, validationResult } = require("express-validator")
 const validateRules = {}
 const inventoryModel = require("../models/inventory-model")
 
@@ -29,7 +29,7 @@ validateRules.classificationRules = () => {
 validateRules.checkClassData = async (req, res, next) => {
   const { classification_name } = req.body
   let errors = []
-  errors = validateResult(req)
+  errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
     res.render("inventory/add-classification", {
@@ -95,7 +95,7 @@ validateRules.checkLoginData = async (req, res, next) => {
     inv_miles, 
     inv_color } = req.body
   let errors = []
-  errors = validateResult(req)
+  errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
     res.render("inventory/add-inventory", {
