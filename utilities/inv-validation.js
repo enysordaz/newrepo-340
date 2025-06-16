@@ -86,7 +86,7 @@ validateRules.inventoryValidationRules = () =>{
 /* ******************************
  * Check data and return errors or continue to add new Vehicle/Inventory
  * ***************************** */
-validateRules.checkLoginData = async (req, res, next) => {
+validateRules.checkInvData = async (req, res, next) => {
   const { inv_make, 
     inv_model, 
     inv_year, 
