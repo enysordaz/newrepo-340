@@ -416,7 +416,7 @@ fieldset {
 }
 
 input:required:valid {
-  border-color: green;
+  border-color: green 2px solid;
 }
 input:invalid {
   border-color: red;

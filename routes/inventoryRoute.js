@@ -38,6 +38,9 @@ router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryVi
 //Route to update the Inventory
 router.post("/update/", invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory))
 
+//Route to delete an Item in the Inventory
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView))
+router.post("/delete/", invValidate.checkUpdateData, utilities.handleErrors(invController.deleteInventoryItem))
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError)
 
