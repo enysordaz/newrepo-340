@@ -12,6 +12,7 @@ async function buildLogin(req, res, next) {
   res.render("account/login", {
     title: "Login",
     nav,
+    errors: null
   })
 }
 
@@ -63,12 +64,14 @@ async function registerAccount(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
+      errors:null
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
+      errors: null
     })
   }
 }
@@ -123,6 +126,8 @@ async function buildAccountManagement(req, res, next) {
   res.render("account/account-management", {
     title: "You are In!",
     nav,
+    errors: null,
+    accountData: res.locals.accountData,
   })
 }
 

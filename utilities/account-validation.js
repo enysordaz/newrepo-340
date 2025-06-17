@@ -80,7 +80,7 @@ validate.checkRegData = async (req, res, next) => {
 * ********************************* */
 validate.loginRules = () => {
     return [
-     // valid email is required and cannot already exist in the database
+     // valid email is required 
       body("account_email")
         .trim()
         .isEmail()
@@ -88,8 +88,8 @@ validate.loginRules = () => {
         .withMessage("A valid email is required.")
         .custom(async (account_email) => {
             const emailExists = await accountModel.checkExistingEmail(account_email)
-            if (emailExists){
-            throw new Error("Email exists. Please log in or use different email")
+            if (!emailExists) {
+              throw new Error("Account does not exist. Please sign up or use different email");
             }
         }),
       
@@ -107,6 +107,7 @@ validate.loginRules = () => {
         .withMessage("Password does not meet requirements."),
     ]
 }
+
 
 /* ******************************
  * Check data and return errors or continue to login

@@ -9,28 +9,6 @@ const invValidate = require("../utilities/inv-validation")
 //Error route
 const errorController = require('../controllers/errorController')
 
-/*
-const managementView = async function (req, res, next) {
-  let nav = await utilities.getNav()
-  res.render("inventory/management", {
-    title: "Inventory Management",
-    nav,
-    errors: null
-  })
-}
-
-router.get("/", async (req, res) => {
-  let nav = await utilities.getNav()
-  res.render("inventory/management", {
-    title: "Inventory Management",
-    nav,
-    errors: null
-  })
-})
-*/
-
-
-
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId)
 
@@ -56,6 +34,10 @@ router.post("/add-inventory", invValidate.inventoryValidationRules(), invControl
 
 //Route for /inv
 router.get('/', invController.managementView)
+
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+//utilities.checkAccountType,
+router.get("/edit/:inventory_id", utilities.handleErrors(invController.buildEditingInventory))
 
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError)
