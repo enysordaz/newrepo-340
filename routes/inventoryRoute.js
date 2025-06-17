@@ -5,7 +5,6 @@ const { body } = require("express-validator")
 const invController = require("../controllers/invController")
 const utilities = require("../utilities")
 const invValidate = require("../utilities/inv-validation")
-
 //Error route
 const errorController = require('../controllers/errorController')
 
@@ -32,12 +31,11 @@ router.post(
 router.get("/add-inventory", invController.buildAddInventory)
 router.post("/add-inventory", invValidate.inventoryValidationRules(), invController.addInventory)
 
-//Route for /inv
+//Route for /inv & Management and updating view
 router.get('/', invController.managementView)
-
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 //utilities.checkAccountType,
-router.get("/edit/:inventory_id", utilities.handleErrors(invController.buildEditingInventory))
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
 
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError)

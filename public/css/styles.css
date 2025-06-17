@@ -348,6 +348,8 @@ main .hero-container .hero-text{
 #registerForm,
 #addClassificationForm,
 #addInventoryForm,
+#inventoryDisplay,
+#editInventoryForm,
 .management {
   display: flex;
   flex-direction: column;
@@ -376,7 +378,8 @@ fieldset {
 #myAccount label,
 #registerForm label,
 #addClassificationForm label,
-#addInventoryForm label {
+#addInventoryForm label,
+#editInventoryForm label {
   color: var(--text-color-light);
   font-family: var(--heading-font);
   text-align: left;
@@ -392,11 +395,13 @@ fieldset {
 #addClassificationForm input[type=text],
 #addInventoryForm input[type=text],
 #addInventoryForm select,
-#addInventoryForm textarea {
+#addInventoryForm textarea,
+#editInventoryForm input[type=text],
+#editInventoryForm select,
+#editInventoryForm textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  box-sizing: border-box;
   border-radius: 5px;
   border: none;
   color: var(--text-color-dark);
@@ -406,7 +411,8 @@ fieldset {
 #myAccount input[type=submit],
 #registerForm input[type=submit],
 #addClassificationForm input[type=submit],
-#addInventoryForm input[type=submit] {
+#addInventoryForm input[type=submit],
+#editInventoryForm input[type=submit] {
   border-radius: 20px;
   padding: .75rem 2rem;
   font-size: 1rem;
@@ -417,7 +423,8 @@ fieldset {
 #myAccount input[type=submit]:hover,
 #registerForm input[type=submit]:hover,
 #addClassificationForm input[type=submit]:hover,
-#addInventoryForm input[type=submit]:hover {
+#addInventoryForm input[type=submit]:hover,
+#editInventoryForm input[type=submit]:hover {
   background-color: var(--primary-color);
   font-weight: 700;
   color: var(--text-color-light);
@@ -469,6 +476,46 @@ input:focus:invalid {
   font-family: var(--paragraph-font);
 }
 
+.instructions p {
+  color: var(--text-color-light);
+  font-family: var(--paragraph-font);
+}
+
+.paragraph {
+  font-family: var(--paragraph-font);
+}
+
+#inventoryDisplay {
+  display: grid;
+  grid-template-columns: 1rem, auto;
+  gap: 1rem;
+  padding: 10px;
+}
+
+#inventoryDisplay,
+#inventoryDisplay a{
+  color: var(--text-color-light);
+  font-family: var(--paragraph-font);
+  padding: 15px;
+}
+
+#inventoryDisplay a:hover{
+  color: var(--primary-color);
+}
+
+#classificationList {
+  width: 45%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--form-bg-color) ;
+  border-radius: 5px;
+  color: var(--text-color-dark);
+}
+
+#classificationList:hover {
+  border: 2px solid var(--primary-color);
+}
 
 /* ------------- Footer  ------------------- */
 footer {
@@ -541,6 +588,7 @@ footer {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   }
+
   .details {
   padding: 2rem 2rem;
   }

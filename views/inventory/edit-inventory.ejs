@@ -1,0 +1,60 @@
+<h1><%= title %></h1>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <%  }) %>
+ </ul>
+<% } %>
+
+<form action="/inv/update" method="post" id="editInventoryForm">
+    <fieldset>
+        <div class="instructions">
+            <p>Edit/Modify any of the Inventory/Vehicles details</p>
+            <label for="classification_id">Select the Classification: </label>
+            <%- classificationSelect %>
+        </div>
+    </fieldset>
+    <fieldset>
+        <label for="inv_make">Make: </label>
+        <input type="text" name="inv_make" id="invMake" title="Make" required value="<%= inv_make %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_model">Model: </label>
+        <input type="text" name="inv_model" title="Car Model" id="invModel" required value="<%= inv_model %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_year">Year: </label>
+        <input type="text" name="inv_year" title="Car Year" id="invYear" required value="<%= inv_year %>">
+    </fieldset>
+    <fieldset>
+        <div class="instructions">
+            <label for="inv_description">Description: </label>
+            <textarea name="inv_description" title="Car Description" id="invDescription" required><%= inv_description %></textarea>
+        </div>
+    </fieldset>
+    <fieldset>
+        <label for="inv_image">Image Path:</label>
+        <input type="text" name="inv_image" title="Car Image Path" id="invImage" required value="<%= inv_image %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_thumbnail">Image Thumbnail Path:</label>
+        <input type="text" name="inv_thumbnail" title="Car Image Thumbnail Path" id="invThumbnail" required value="<%= inv_thumbnail %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_price">Price: </label>
+        <input type="text" name="inv_price" title="Car Price" id="invPrice" required value="<%= inv_price %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_miles">Miles: </label>
+        <input type="text" name="inv_miles" title="Car Miles" id="invMiles" required value="<%= inv_miles %>">
+    </fieldset>
+    <fieldset>
+        <label for="inv_color">Color: </label>
+        <input type="text" name="inv_color" title="Car Color" id="invColor" required value="<%= inv_color %>">
+    </fieldset>
+
+    <input type="submit" value="Update Vehicle" name="Update Vehicle">
+
+</form>
