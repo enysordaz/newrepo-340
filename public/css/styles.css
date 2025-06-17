@@ -345,11 +345,8 @@ main .hero-container .hero-text{
 
 /* ------------- Form  ------------------- */
 #myAccount, 
-#registerForm,
-#addClassificationForm,
-#addInventoryForm,
 #inventoryDisplay,
-#editInventoryForm,
+.formStyle,
 .management {
   display: flex;
   flex-direction: column;
@@ -376,10 +373,7 @@ fieldset {
 }
 
 #myAccount label,
-#registerForm label,
-#addClassificationForm label,
-#addInventoryForm label,
-#editInventoryForm label {
+.formStyle label {
   color: var(--text-color-light);
   font-family: var(--heading-font);
   text-align: left;
@@ -389,16 +383,11 @@ fieldset {
 #myAccount input[type=email],
 #myAccount input[type=text],
 #myAccount input[type=password],
-#registerForm input[type=text],
-#registerForm input[type=email],
-#registerForm input[type=password],
-#addClassificationForm input[type=text],
-#addInventoryForm input[type=text],
-#addInventoryForm select,
-#addInventoryForm textarea,
-#editInventoryForm input[type=text],
-#editInventoryForm select,
-#editInventoryForm textarea {
+.formStyle input[type=email],
+.formStyle input[type=password],
+.formStyle input[type=text],
+.formStyle select,
+.formStyle textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -409,10 +398,8 @@ fieldset {
 }
 
 #myAccount input[type=submit],
-#registerForm input[type=submit],
-#addClassificationForm input[type=submit],
-#addInventoryForm input[type=submit],
-#editInventoryForm input[type=submit] {
+.formStyle input[type=submit],
+.formStyle button[type=submit] {
   border-radius: 20px;
   padding: .75rem 2rem;
   font-size: 1rem;
@@ -421,10 +408,8 @@ fieldset {
 }
 
 #myAccount input[type=submit]:hover,
-#registerForm input[type=submit]:hover,
-#addClassificationForm input[type=submit]:hover,
-#addInventoryForm input[type=submit]:hover,
-#editInventoryForm input[type=submit]:hover {
+.formStyle input[type=submit]:hover,
+.formStyle button[type=submit]:hover {
   background-color: var(--primary-color);
   font-weight: 700;
   color: var(--text-color-light);

@@ -33,9 +33,10 @@ router.post("/add-inventory", invValidate.inventoryValidationRules(), invControl
 
 //Route for /inv & Management and updating view
 router.get('/', invController.managementView)
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
-//utilities.checkAccountType,
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON)) //utilities.checkAccountType,
 router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
+//Route to update the Inventory
+router.post("/update/", invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory))
 
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError)
