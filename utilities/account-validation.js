@@ -6,7 +6,7 @@ const accountModel = require("../models/account-model")
 /*  **********************************
 *  Registration Data Validation Rules
 * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
     return [
       // firstname is required and must be string
       body("account_firstname")
@@ -108,7 +108,6 @@ validate.loginRules = () => {
     ]
 }
 
-
 /* ******************************
  * Check data and return errors or continue to login
  * ***************************** */
@@ -125,6 +124,41 @@ validate.checkLoginData = async (req, res, next) => {
       account_email,
     })
     return
+  }
+  next()
+}
+
+/* ******************************
+ * Check data and return errors or continue to Update Account Information
+ * ***************************** */
+validate.updateAccountRules = () => {
+    return [
+    body("account_firstname")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a first name."),
+    body("account_lastname")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a last name."),
+    body("account_email")
+      .trim()
+      .isEmail()
+      .withMessage("A valid email is required.")
+  ]
+}
+
+
+validate.checkUpdateAccountData = async (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav()
+    return res.status(400).render("account/update-account", {
+      title: "Update Account",
+      nav,
+      errors: errors.array(),
+      accountData: req.body
+    })
   }
   next()
 }

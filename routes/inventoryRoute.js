@@ -14,8 +14,16 @@ router.get("/type/:classificationId", invController.buildByClassificationId)
 // GET /inventory/:id (for example)
 router.get('/detail/:id', invController.getCarById);
 
+
+/** ********************
+ * Route to build Add Classification view
+ *********************** */
 // Route to build Classification view
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification))
+router.get("/add-classification", 
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin, 
+  utilities.handleErrors(invController.buildAddClassification)
+)
 
 // Process the New Classification Data
 router.post(
@@ -27,20 +35,73 @@ router.post(
   invController.addClassification
 )
 
-// Route to build Inventory Details view
-router.get("/add-inventory", invController.buildAddInventory)
-router.post("/add-inventory", invValidate.inventoryValidationRules(), invController.addInventory)
+/** ********************
+ * Route to build Inventory Details view
+ *********************** */
+router.get(
+  "/add-inventory",
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin,
+  utilities.handleErrors(invController.buildAddInventory)
+)
+
+router.post(
+  "/add-inventory", 
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin,
+  invValidate.inventoryValidationRules(), 
+  utilities.handleErrors(invController.addInventory)
+)
 
 //Route for /inv & Management and updating view
 router.get('/', invController.managementView)
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON)) //utilities.checkAccountType,
-router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
-//Route to update the Inventory
-router.post("/update/", invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory))
+// Protect inventory management
+router.get(
+  "/management",
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin,
+  utilities.handleErrors(invController.managementView)
+)
 
-//Route to delete an Item in the Inventory
-router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView))
-router.post("/delete/", invValidate.checkUpdateData, utilities.handleErrors(invController.deleteInventoryItem))
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON)) //utilities.checkAccountType,
+
+/** ********************
+ * Update Inventory Router
+ *********************** */
+router.get(
+  "/edit/:inv_id", 
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin,
+  utilities.handleErrors(invController.editInventoryView)
+)
+
+//Route to update the Inventory
+router.post(
+  "/update/", 
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin,
+  invValidate.checkUpdateData, 
+  utilities.handleErrors(invController.updateInventory)
+)
+
+/** ********************
+ * Delete Inventory Route
+ *********************** */
+router.get(
+  "/delete/:inv_id", 
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin,
+  utilities.handleErrors(invController.deleteInventoryView)
+)
+
+router.post(
+  "/delete/",
+  utilities.checkJWTToken,
+  utilities.checkEmployeeOrAdmin, 
+  invValidate.checkUpdateData, 
+  utilities.handleErrors(invController.deleteInventoryItem)
+)
+
 // New route to intentionally trigger 500 error
 router.get('/trigger-error', errorController.throwServerError)
 

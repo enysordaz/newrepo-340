@@ -131,5 +131,65 @@ async function buildAccountManagement(req, res, next) {
   })
 }
 
+/* ****************************************
+*  Deliver Logout
+* *************************************** */
+function logoutAccount(req, res) {
+  res.clearCookie("jwt");
+  req.flash("notice", "You have been logged out.");
+  res.redirect("/");
+}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement }
+/* ****************************************
+*  Deliver Update Account
+* *************************************** */
+async function buildUpdateAccount(req, res, next) {
+  try {
+    const accountId = req.params.accountId    
+    const accountData = await accountModel.getAccountById(accountId)
+    const nav = await utilities.getNav()
+
+    if (!accountData) {
+      req.flash("notice", "Account not found.")
+      return res.redirect("/account")
+    }
+
+    res.render("account/update-account", {
+      title: "Update Account",
+      nav,
+      accountData,
+      errors: null
+    })
+  } catch (error) {
+    console.error("buildUpdateAccount error:", error)
+    next(error)
+  }
+}
+
+async function updateAccount(req, res, next) {
+
+  const { account_id, account_firstname, account_lastname, account_email } = req.body
+  const nav = await utilities.getNav()
+
+  try {
+    const updateResult = await accountModel.updateAccount(account_id, account_firstname, account_lastname, account_email)
+
+    if (updateResult) {
+      req.flash("notice", "Account information updated successfully.")
+      return res.redirect("/account")
+    } else {
+      req.flash("notice", "Update failed. Please try again.")
+      return res.status(500).render("account/update-account", {
+        title: "Update Account",
+        nav,
+        accountData: req.body,
+        errors: null
+      })
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, logoutAccount, buildUpdateAccount, updateAccount }

@@ -70,13 +70,36 @@ h1, h2, h3 {
 
 #tools{
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 500;
   font-family: var(--heading-font);
+  padding: 5px;
 }
 
-#tools:hover {
-  text-decoration: overline;
+#tools:hover,
+.update a:hover {
+  text-decoration: overline 2px solid;
   text-decoration-color: var(--primary-color);
+}
+
+#tools ul li{
+  list-style: none;
+}
+
+.managementBtn:hover,
+.logoutBtn:hover {
+  background-color: var(--nav-hover-background-color);
+}
+
+.welcome {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  padding: 5px;
+}
+
+.update a {
+  font-family: var(--paragraph-font);
+  color: var(--text-color-dark);
+  text-decoration: underline .5px solid;
 }
 
 /* ------------- Navigation ------------------- */

@@ -3,6 +3,17 @@
     <a href="/" title="Return to home page">CSE Motors</a>
   </span>
   <div id="tools">
-    <a title="LogIn" href="/account/login">My Account</a>
+    <ul>
+      <% if (loggedIn) { %>
+        <li><a href="/account/">Welcome <%= accountFirstName %></a></li>
+        <% if (accountData && (accountData.account_type === 'Admin' || accountData.account_type === 'Employee')) { %>
+          <li class="managementBtn"><a href="/inv/management">Inventory Management</a></li>
+        <% } %>
+        <li class="logoutBtn"><a href="/account/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/account/login" title="LogIn">My Account</a></li>
+      <% } %>
+    </ul>
   </div>
+  
 </header>

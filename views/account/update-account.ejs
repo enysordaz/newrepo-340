@@ -1,0 +1,34 @@
+<h1>Update Account</h1>
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error=> { %>
+        <% if (error.msg !='Invalid value' ) { %>
+ 
+          <li>
+            <%= error.msg %>
+          </li>
+          <% } %>
+            <% }) %>
+    </ul>
+<% }%>
+
+<p class="paragraph"><%= accountData.account_firstname %> <%= accountData.account_lastname %></p>
+
+<form method="post" action="/account/update" class="formStyle">
+  <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+  <fieldset>
+    <label for="accountFirstName">First Name:</label>
+    <input type="text" name="account_firstname" value="<%= accountData.account_firstname %>">
+  </fieldset>
+  <fieldset>
+    <label for="accountLastName">Last Name:</label>
+    <input type="text" name="account_lastname" value="<%= accountData.account_lastname %>">
+  </fieldset>
+  <fieldset>
+    <label for="accountEmail">Email: </label>
+    <input type="email" name="account_email" value="<%= accountData.account_email %>">
+  </fieldset>
+  
+  <button type="submit">Update</button>
+</form>

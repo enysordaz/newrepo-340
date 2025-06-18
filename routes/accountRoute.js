@@ -8,7 +8,9 @@ const accountController = require("../controllers/accountController");
 //Error route
 const errorController = require('../controllers/errorController');
 
-
+/** ********************
+ * Route to build login and Register view
+ *********************** */
 // Route to build login view
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 
@@ -20,7 +22,7 @@ router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.b
 // Process the registration data
 router.post(
   "/register",
-  regValidate.registationRules(),
+  regValidate.registrationRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 )
@@ -31,6 +33,29 @@ router.post(
   regValidate.loginRules(),
   regValidate.checkLoginData,
   utilities.handleErrors(accountController.accountLogin)
+)
+
+/** ********************
+ * Logout route
+ *********************** */
+router.get('/logout', utilities.handleErrors(accountController.logoutAccount))
+
+/** ********************
+ * Update account route
+ *********************** */
+router.get(
+  "/update/:accountId", 
+  utilities.checkJWTToken, 
+  utilities.checkLogin, 
+  utilities.handleErrors(accountController.buildUpdateAccount)
+)
+
+router.post("/update",
+  utilities.checkJWTToken,
+  utilities.checkLogin,
+  regValidate.updateAccountRules(),
+  regValidate.checkUpdateAccountData,
+  utilities.handleErrors(accountController.updateAccount)
 )
 
 // New route to intentionally trigger 500 error

@@ -118,13 +118,19 @@ Util.checkJWTToken = (req, res, next) => {
     if (err) {
      req.flash("Please log in")
      res.clearCookie("jwt")
+     res.locals.loggedIn = false
+     res.locals.accountFirstName = null
      return res.redirect("/account/login")
     }
     res.locals.accountData = accountData
     res.locals.loggedin = 1
+    res.locals.loggedIn = true
+    res.locals.accountFirstName = accountData.account_firstname
     next()
    })
  } else {
+  res.locals.loggedIn = false
+  res.locals.accountFirstName = null
   next()
  }
 }
@@ -137,6 +143,27 @@ Util.checkLogin = (req, res, next) => {
     next()
   } else {
     req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
+ * Middleware to check if user is Employee or Admin
+ **************************************** */
+Util.checkEmployeeOrAdmin = (req, res, next) => {
+  //console.log("Checking account type for restricted access...")
+
+  const accountData = res.locals.accountData
+  if (!accountData) {
+    req.flash("notice", "You must be logged in to access this page.")
+    return res.redirect("/account/login")
+  }
+
+  const { account_type } = accountData
+  if (account_type === "Employee" || account_type === "Admin") {
+    next()
+  } else {
+    req.flash("notice", "You do not have permission to access this page.")
     return res.redirect("/account/login")
   }
 }
