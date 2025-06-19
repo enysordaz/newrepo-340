@@ -7,6 +7,7 @@
 
 <!-- Inventory Management Link ONLY for Employee/Admin -->
 <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
-  <h3>Inventory Management</h3>
-  <p><a href="/inv/management">Go to Inventory Management</a></p>
+  <hr>
+    <h3>Inventory Management</h3>
+    <p class="update"><a href="/inv/management">Go to Inventory Management</a></p>
 <% } %>
